@@ -263,6 +263,15 @@ function ChatMarkdown({ text, cwd, isStreaming = false }: ChatMarkdownProps) {
           />
         );
       },
+      p: ({ node: _node, ...props }) => <p dir="auto" {...props} />,
+      h1: ({ node: _node, ...props }) => <h1 dir="auto" {...props} />,
+      h2: ({ node: _node, ...props }) => <h2 dir="auto" {...props} />,
+      h3: ({ node: _node, ...props }) => <h3 dir="auto" {...props} />,
+      h4: ({ node: _node, ...props }) => <h4 dir="auto" {...props} />,
+      h5: ({ node: _node, ...props }) => <h5 dir="auto" {...props} />,
+      h6: ({ node: _node, ...props }) => <h6 dir="auto" {...props} />,
+      li: ({ node: _node, ...props }) => <li dir="auto" {...props} />,
+      blockquote: ({ node: _node, ...props }) => <blockquote dir="auto" {...props} />,
       pre({ node: _node, children, ...props }) {
         const codeBlock = extractCodeBlock(children);
         if (!codeBlock) {
@@ -289,10 +298,7 @@ function ChatMarkdown({ text, cwd, isStreaming = false }: ChatMarkdownProps) {
   );
 
   return (
-    <div
-      dir="auto"
-      className="chat-markdown w-full min-w-0 text-sm leading-relaxed text-foreground/80"
-    >
+    <div className="chat-markdown w-full min-w-0 text-sm leading-relaxed text-foreground/80">
       <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
         {text}
       </ReactMarkdown>
